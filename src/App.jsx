@@ -2,34 +2,30 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { DataProvider } from './context/DataContext.jsx';
+import TemperatureChart from './components/areaChart'
+import CurrentWeather from './components/currentinfo.jsx';
+import WeaklyOverview from './components/WeeklyOverview.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <DataProvider>
+
+    <div className='flex flex-row space-x-4'>
+      <div  className="basis-1/4 rounded-lg shadow-lg pt-10" >
+          <CurrentWeather />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='flex flex-col basis-1/2 rounded-lg shadow-lg p-8'>
+          <div  className="basis-1/4 " >
+          <WeaklyOverview />
+          </div>
+          <div  className="basis-1" >
+          <TemperatureChart />
+          </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+    </DataProvider>
+  );
 }
 
-export default App
+export default App;
