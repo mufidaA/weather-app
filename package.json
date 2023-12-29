@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --port 8080",
     "test": "jest",
-    "start": "npm run preview"
+    "start": "node_modules/.bin/vite preview"
   },
   "dependencies": {
     "axios": "^1.6.3",
