@@ -1,7 +1,7 @@
 import { useDataContext } from '../context/DataContext.jsx';
 import { useToggleContext } from '../context/ToggleContext';
 import { WiThermometerExterior } from 'weather-icons-react';
-import { getCurrentDateTimeString } from '../utils/DateTime.js';
+import { getCurrentDateTimeString } from '../services/DateTimeFormat.js';
 
 const WeeklyOverview = () => {
   const { data } = useDataContext();

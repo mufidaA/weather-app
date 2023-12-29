@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {useDataContext} from '../context/DataContext.jsx';
 import { useToggleContext } from '../context/ToggleContext';
 import { WiThermometerExterior, WiThermometer } from 'weather-icons-react';
-import { getCurrentDateTimeString } from '../utils/DateTime.js';
+import { getCurrentDateTimeString } from '../services/DateTimeFormat.js';
 
 const CurrentWeather = () => {
     const { data} = useDataContext();

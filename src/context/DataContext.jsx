@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { fetchHourlyTemperature } from '../services/ApiService';
+import {convertTemperature} from '../services/ConversionService';
+import  getLocation  from '../services/LocationService';
 import { useToggleContext } from './ToggleContext';
 
 
@@ -15,35 +17,43 @@ const DataProvider = ({ children }) => {
     setData(data);
     sessionStorage.setItem('data', JSON.stringify(data));
   }, []);
+  
+  const updateLocalStorage = useCallback((data) => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, []);
 
   const { isOn } = useToggleContext();
+
+
+  const handleFetchError = (error, isOn, setData) => {
+    console.error('Error fetching data:', error);
+    const storedData = localStorage.getItem('data');
+    const parsedData = JSON.parse(storedData);
+    if (storedData && isOn) {
+      const convertedData = convertTemperature(parsedData);
+      setData(convertedData);
+    } else {
+      setData(parsedData);
+    }
+  };
 
   useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const latitude = 65.01221;
-        const longitude = 25.46164;
+        const { latitude, longitude } = await getLocation();
+
+        console.log('Location:', { latitude, longitude }); 
 
         const response = await fetchHourlyTemperature(latitude, longitude);
-        if ( isOn ) {
-          const fTemperature = response.temperature_2m.map((celsius) => ((celsius * 9) / 5 + 32).toFixed(1));
-          const convertedData = {
-            time: response.time,
-            temperature_2m: fTemperature,
-          };
-          console.log('Updated Data:', convertedData);
-          updateData(convertedData);
-
-        }
-        else {updateData(response);}
+        isOn ? updateData(convertTemperature(response)) : updateData(response);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        handleFetchError(error, isOn, setData);
       }
     };
 
     fetchData();
-  }, [isOn, updateData]);
+  }, [isOn, updateData, updateLocalStorage]);
 
   return (
     <DataContext.Provider value={{ data, updateData }}>
