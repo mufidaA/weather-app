@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiEndpoints from '../config/apiConfig';
+import apiEndpoints from '../config/ApiConfig';
 
 export const fetchHourlyTemperature = async (latitude, longitude) => {
   try {

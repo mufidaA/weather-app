@@ -1,5 +1,6 @@
 import { useToggleContext } from '../context/ToggleContext';
 
+
 const ToggleTemperatureUnit = () => {
   const { isOn, toggleSwitch } = useToggleContext();
 

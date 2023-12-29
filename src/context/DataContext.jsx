@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import { fetchHourlyTemperature } from '../services/apiService';
+import { fetchHourlyTemperature } from '../services/ApiService';
 import { useToggleContext } from './ToggleContext';
 
 

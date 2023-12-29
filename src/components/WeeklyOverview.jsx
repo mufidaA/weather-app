@@ -1,9 +1,11 @@
 import { useDataContext } from '../context/DataContext.jsx';
+import { useToggleContext } from '../context/ToggleContext';
 import { WiThermometerExterior } from 'weather-icons-react';
-import { getCurrentDateTimeString } from './dateTime.js';
+import { getCurrentDateTimeString } from '../utils/DateTime.js';
 
 const WeeklyOverview = () => {
   const { data } = useDataContext();
+  const {unit } = useToggleContext();
 
   if (!data) {
     return <div>Loading...</div>;
@@ -42,8 +44,8 @@ const WeeklyOverview = () => {
             <WiThermometerExterior className="icon" size={40} color="#38bdf8" />
           </div>
           <div className='flex flex-row space-x-2 text-sm'>
-            <p className='text-sky-400'>{minTemperature}°</p>
-            <p> {maxTemperature}°</p>
+            <p className='text-sky-400'>{`${minTemperature}${unit}`}</p>
+            <p> {`${maxTemperature}${unit}`}</p>
           </div>
         </div>
       ))}

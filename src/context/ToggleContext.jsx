@@ -12,13 +12,16 @@ export const useToggleContext = () => {
 
 export const ToggleProvider = ({ children }) => {
   const [isOn, setIsOn] = useState(false);
+  const [unit, setUnit] = useState("°C");
 
   const toggleSwitch = () => {
     setIsOn((prevIsOn) => !prevIsOn);
+    setUnit((prevUnit) => (prevUnit === "°C" ? "°F" : "°C"));
   };
 
   const contextValue = {
     isOn,
+    unit,
     toggleSwitch,
   };
 
