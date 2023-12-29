@@ -58,8 +58,6 @@ const TemperatureChart = () => {
     }
   }, [data]);
 
-  
-
   return (
     <div>
       {loading ? (

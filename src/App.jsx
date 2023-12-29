@@ -1,8 +1,8 @@
 import './App.css'
 import { DataProvider } from './context/DataContext.jsx';
 import { ToggleProvider } from './context/ToggleContext.jsx';
-import TemperatureChart from './components/AreaChart'
-import CurrentWeather from './components/Currentinfo.jsx';
+import TemperatureChart from './components/HourlyTemperatureChart.jsx'
+import CurrentWeather from './components/CurrentWeather.jsx';
 import WeaklyOverview from './components/WeeklyOverview.jsx';
 import Header from './components/Header.jsx';
 
