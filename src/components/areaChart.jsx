@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDataContext }from '../context/DataContext.jsx';
+import { options } from './ChartOptions.jsx';
 import 'chartjs-adapter-moment';
 import {
   Chart as ChartJS,
@@ -57,35 +58,7 @@ const TemperatureChart = () => {
     }
   }, [data]);
 
-  const options = {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'time',
-        time: {
-          unit: 'day',
-          stepSize: 1,
-          unitStepSize: 12,
-          parser: 'YYYY-MM-DDTHH:mm',
-          displayFormats: {
-            day: 'MMM DD',
-            hour: 'HH:mm',
-          },
-          maxTicksLimit: 7,
-        },
-        title: {
-          display: true,
-          text: 'Time',
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: 'Temperature',
-        },
-      },
-    },
-  };
+  
 
   return (
     <div>

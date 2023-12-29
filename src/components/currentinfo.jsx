@@ -31,7 +31,7 @@ const CurrentWeather = () => {
       <div className='text-xl font-semibold pt-6'>Current Weather</div>
       <div className='pt-6'>{displayDate}</div>
 
-      <div className='text-xl pt-2'>{currentTemperature} °C</div>
+      <div className='text-xl pt-2'>{currentTemperature} °</div>
       <div>
       {isTemperatureBelowMinus5 ? (
           <WiThermometer className="icon" size={80} color='#38bdf8' />
