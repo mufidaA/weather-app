@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { fetchHourlyTemperature } from '../services/ApiService';
 import {convertTemperature} from '../services/ConversionService';
-import  getLocation  from '../services/LocationService';
 import { useToggleContext } from './ToggleContext';
 
 
@@ -41,11 +40,7 @@ const DataProvider = ({ children }) => {
     
     const fetchData = async () => {
       try {
-        const { latitude, longitude } = await getLocation();
-
-        console.log('Location:', { latitude, longitude }); 
-
-        const response = await fetchHourlyTemperature(latitude, longitude);
+        const response = await fetchHourlyTemperature();
         isOn ? updateData(convertTemperature(response)) : updateData(response);
       } catch (error) {
         handleFetchError(error, isOn, setData);
