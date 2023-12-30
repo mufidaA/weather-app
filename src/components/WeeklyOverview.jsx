@@ -38,7 +38,7 @@ const WeeklyOverview = () => {
     <div className='flex flex-row space-x-4 p-8 m-2'>
       <div className='text-xl font-semibold pt-6'>Weekly Overview</div>
       {dailyMinMax.map(({ date, minTemperature, maxTemperature }) => (
-        <div key={date} className='size-40 rounded-lg shadow-md shadow-indigo-500/50 p-8'>
+        <div key={date} className=' rounded-lg shadow-md shadow-indigo-500/50 p-8'>
           <p>{date === today ? 'Today' : date}</p>
           <div className='mx-8'>
             <WiThermometerExterior className="icon" size={40} color="#38bdf8" />
