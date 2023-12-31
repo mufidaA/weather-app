@@ -41,7 +41,9 @@ const DataProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await fetchHourlyTemperature();
-        isOn ? updateData(convertTemperature(response)) : updateData(response);
+        const updatedData = isOn ? convertTemperature(response) : response;
+        updateData(updatedData);
+        updateLocalStorage(updatedData);
       } catch (error) {
         handleFetchError(error, isOn, setData);
       }
@@ -51,7 +53,7 @@ const DataProvider = ({ children }) => {
   }, [isOn, updateData, updateLocalStorage]);
 
   return (
-    <DataContext.Provider value={{ data, updateData }}>
+    <DataContext.Provider value={{ data, updateData, updateLocalStorage }}>
       {children}
     </DataContext.Provider>
   );
