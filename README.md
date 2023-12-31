@@ -10,6 +10,8 @@ Project Setup: Vite (recommended project setup)
 Styling: Primarily implemented with Tailwind CSS (recommended CSS framework)
 Language: JavaScript
 The app is accessible on the internet at [weather-app](https://mufidaa.github.io/weather-app/).
+![preview  of the app](public/weather2023-12-30 17-56.gif)
+
 
 ## Technical Requirements: Status
 
