@@ -30,13 +30,15 @@ const WeeklyOverview = () => {
 
 
   const calculateMinMaxAverage = (temperatures) => {
+    console.log(temperatures)
     const minTemperature = Math.min(...temperatures).toFixed(1);
     const maxTemperature = Math.max(...temperatures).toFixed(1);
-    const averageTemperature = (
-      temperatures.reduce((acc, temperature) => acc + temperature, 0) / temperatures.length
-    ).toFixed(1);
+    const sum = temperatures.reduce( (acc, temperature) => acc + temperature, 0);
+    const averageTemperature = ( sum / temperatures.length).toFixed(1);
   
     return { minTemperature, maxTemperature, averageTemperature };
+
+
   };
   
   const dailyMinMaxArray = Object.entries(groupedData).map(([date, temperatures]) => {
@@ -49,6 +51,7 @@ const WeeklyOverview = () => {
     (acc, entry) => acc + parseFloat(entry.averageTemperature),
     0
   ) / dailyMinMaxArray.length;
+  
   
   const isBelowMinus5Celsius = isTemperatureBelowThreshold(unit, averageTemperature);
   
