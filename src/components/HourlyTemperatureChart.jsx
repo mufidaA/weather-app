@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDataContext }from '../context/DataContext.jsx';
+import { useDataContext }from '../context/DataContext';
 import { options } from '../services/ChartOptions';
 import 'chartjs-adapter-moment';
 import {
