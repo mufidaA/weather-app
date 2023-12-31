@@ -12,13 +12,13 @@ const DataProvider = ({ children }) => {
     return storedData ? JSON.parse(storedData) : null;
   });
 
-  const updateData = useCallback((data) => {
-    setData(data);
-    sessionStorage.setItem('data', JSON.stringify(data));
+  const updateData = useCallback((newData) => {
+    setData(newData);
+    sessionStorage.setItem('data', JSON.stringify(newData));
   }, []);
   
-  const updateLocalStorage = useCallback((data) => {
-    localStorage.setItem('data', JSON.stringify(data));
+  const updateLocalStorage = useCallback((newData) => {
+    localStorage.setItem('data', JSON.stringify(newData));
   }, []);
 
   const { isOn } = useToggleContext();
