@@ -1,6 +1,6 @@
 import { useDataContext } from '../context/DataContext.jsx';
 import { useToggleContext } from '../context/ToggleContext';
-import { WiThermometerExterior } from 'weather-icons-react';
+import { WiThermometerExterior, WiThermometer } from 'weather-icons-react';
 import { getCurrentDateTimeString } from '../services/DateTimeFormat';
 import { isTemperatureBelowThreshold } from '../services/IconsHelper';
 
@@ -29,22 +29,33 @@ const WeeklyOverview = () => {
 
 
 
-  const dailyMinMax = Object.entries(groupedData).map(([date, temperatures]) => {
+  const calculateMinMaxAverage = (temperatures) => {
     const minTemperature = Math.min(...temperatures).toFixed(1);
     const maxTemperature = Math.max(...temperatures).toFixed(1);
-    const averageTemperature = ((temperatures.reduce((acc, temperature) =>
-                                 acc + temperature, 0))/ temperatures.length).toFixed(1);
-    return { date, minTemperature, maxTemperature, averageTemperature };
+    const averageTemperature = (
+      temperatures.reduce((acc, temperature) => acc + temperature, 0) / temperatures.length
+    ).toFixed(1);
+  
+    return { minTemperature, maxTemperature, averageTemperature };
+  };
+  
+  const dailyMinMaxArray = Object.entries(groupedData).map(([date, temperatures]) => {
+    return { date, ...calculateMinMaxAverage(temperatures) };
   });
   
-
   const { today } = getCurrentDateTimeString();
-  const isBelowMinus5Celsius = isTemperatureBelowThreshold(unit, dailyMinMax.averageTemperature);
-
+  
+  const averageTemperature = dailyMinMaxArray.reduce(
+    (acc, entry) => acc + parseFloat(entry.averageTemperature),
+    0
+  ) / dailyMinMaxArray.length;
+  
+  const isBelowMinus5Celsius = isTemperatureBelowThreshold(unit, averageTemperature);
+  
   return (
     <div className='flex flex-row space-x-4 p-8 m-2'>
       <div className='text-xl font-semibold pt-6'>Weekly Overview</div>
-      {dailyMinMax.map(({ date, minTemperature, maxTemperature }) => (
+      {dailyMinMaxArray.map(({ date, minTemperature, maxTemperature }) => (
         <div key={date} className=' rounded-lg shadow-md shadow-indigo-500/50 p-8'>
           <p>{date === today ? 'Today' : date}</p>
 
