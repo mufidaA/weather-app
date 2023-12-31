@@ -9,9 +9,9 @@ Framework: ReactJS
 Project Setup: Vite (recommended project setup)
 Styling: Primarily implemented with Tailwind CSS (recommended CSS framework)
 Language: JavaScript
-The app is accessible on the internet at [weather-app](https://github.com/mufidaA/weather-app).
+The app is accessible on the internet at [weather-app](https://mufidaa.github.io/weather-app/).
 
-## Technical Requirements to Backlog: Status for Each
+## Technical Requirements: Status
 
 | Requirements                                                 | Classification |Status |
 | -------------------------------------------------------------|----------------|----------|
@@ -22,43 +22,7 @@ The app is accessible on the internet at [weather-app](https://github.com/mufida
 
 ### Additional Feature
 Geolocation-Based Retrieval: The app reads the browser's location with permission and adds it as parameters for longitude and latitude in the API query.
-API Query: (`${baseUrl}?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m) 
-
-## Project Structure
-
-├── package.json
-├── package-lock.json
-├── README.md
-├── setupTests.js
-├── src
-│   ├── App.css
-│   ├── App.jsx
-│   ├── assets
-│   ├── components
-│   │   ├── CurrentWeather.jsx
-│   │   ├── Header.jsx
-│   │   ├── HourlyTemperatureChart.jsx
-│   │   ├── ToggleTemperatureUnit.jsx
-│   │   └── WeeklyOverview.jsx
-│   ├── config
-│   │   └── ApiConfig.js
-│   ├── context
-│   │   ├── DataContext.jsx
-│   │   └── ToggleContext.jsx
-│   ├── index.css
-│   ├── main.jsx
-│   └── services
-│       ├── ApiService.js
-│       ├── ChartOptions.js
-│       ├── ConversionService.js
-│       ├── DateTimeFormat.js
-│       └── LocationService.js
-├── tailwind.config.js
-├── tests
-│   ├── ChartRendering.test.js
-│   ├── CurrentWeather.test.js
-│   └── WeeklyOverview.test.js
-└── vite.config.js
+API Query: `${baseUrl}?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`
 
 ## Main Components & Data Management
 ### Header component:
@@ -90,46 +54,49 @@ In the selection of third-party libraries, official React libraries were priorit
 
 1. Cloning the Git Repositories of the App
 
-HTTP: (`git clone https://github.com/mufidaA/weather-app.git)
-SSH: (`git clone git@github.com:mufidaA/weather-app.git)
-GitHub CLI:(`gh repo clone mufidaA/weather-app)
+HTTP: `git clone https://github.com/mufidaA/weather-app.git`
+
+SSH: `git clone git@github.com:mufidaA/weather-app.git`
+
+GitHub CLI:`gh repo clone mufidaA/weather-app`
 
 2. Installing Dependencies
-In the app root (cd weather-app), run to install dependencies.
+In the app root, run to install dependencies.
 
 npm
-(`cd weather-app
-Weather-app~ npm install)
+`cd weather-app`
+
+`Weather-app~ npm install`
 
 yarn
-(`cd weather-app
-Weather-app~ yarn)
+`cd weather-app`
+
+`Weather-app~ yarn`
 
 3. Compiling the App Source Code
 
 Dev mode:
 npm
-(`
-Weather-app~ npm run dev)
+`Weather-app~ npm run dev`
+
 yarn
-(`Weather-app~ yarn dev)
+`Weather-app~ yarn dev`
 
 Preview mode:
 
-(`Weather-app~ npm run build)
-(`Weather-app~ npm run preview)
-
-(`Weather-app~ yarn build)
-(`Weather-app~ yarn preview)
-
-4. Running the Tests
 npm
-
-(`Weather-app~ npm run test)
+`Weather-app~ npm run build`
+`Weather-app~ npm run preview`
 
 yarn
+`Weather-app~ yarn build`
+`Weather-app~ yarn preview`
 
-(`Weather-app~ yarn test)
+4. Running the Tests
+
+npm `Weather-app~ npm run test`
+
+yarn `Weather-app~ yarn test`
 
 ## Known Issues and Potential Plans
 Console does not display issues, and the app behaves as expected.
