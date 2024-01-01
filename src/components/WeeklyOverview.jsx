@@ -30,7 +30,6 @@ const WeeklyOverview = () => {
 
 
   const calculateMinMaxAverage = (temperatures) => {
-    console.log(temperatures)
     const minTemperature = Math.min(...temperatures).toFixed(1);
     const maxTemperature = Math.max(...temperatures).toFixed(1);
     const sum = temperatures.reduce( (acc, temperature) => acc + temperature, 0);
@@ -47,23 +46,15 @@ const WeeklyOverview = () => {
   
   const { today } = getCurrentDateTimeString();
   
-  const averageTemperature = dailyMinMaxArray.reduce(
-    (acc, entry) => acc + parseFloat(entry.averageTemperature),
-    0
-  ) / dailyMinMaxArray.length;
-  
-  
-  const isBelowMinus5Celsius = isTemperatureBelowThreshold(unit, averageTemperature);
-  
   return (
     <div className='flex flex-row space-x-4 p-8 m-2'>
       <div className='text-xl font-semibold pt-6'>Weekly Overview</div>
-      {dailyMinMaxArray.map(({ date, minTemperature, maxTemperature }) => (
+      {dailyMinMaxArray.map(({ date, minTemperature, maxTemperature, averageTemperature}) => (
         <div key={date} className=' rounded-lg shadow-md shadow-indigo-500/50 p-8'>
           <p>{date === today ? 'Today' : date}</p>
 
           <div className='mx-8'>
-          {isBelowMinus5Celsius ? (
+          {(isTemperatureBelowThreshold(unit, averageTemperature)) ? (
               <WiThermometer className="icon" size={40} color='#38bdf8' />
             ) : (
               <WiThermometerExterior className="icon" size={40} color='#38bdf8' />

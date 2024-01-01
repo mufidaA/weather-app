@@ -28,7 +28,7 @@ const CurrentWeather = () => {
   const { displayDate} = getCurrentDateTimeString();
   
   const isBelowMinus5Celsius = isTemperatureBelowThreshold(unit, currentTemperature);
-
+  
   
   return (
     <div className="flex flex-col p-8">

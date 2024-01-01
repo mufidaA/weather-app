@@ -2,7 +2,7 @@ export const getCurrentDateTimeString = () => {
     const currDate = new Date();
     
     const [month, day, year] = currDate.toLocaleDateString().split('/');
-    const formattedDate = `${year}-${month}-${day}`;
+    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const todayOptions = { weekday: 'short', month: 'short', day: 'numeric' };
